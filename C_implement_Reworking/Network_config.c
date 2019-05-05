@@ -1,6 +1,7 @@
-#include "Operation.h"
+#include <stdio.h>
 #include "Network_config.h"
-#include "Memory.h"
+
+
 
 /*=================================================================================================================*/
 /* =================================================Layer Configuration============================================*/
@@ -60,6 +61,7 @@ void layer_configuration(layer_config *lc){
 		lc[i].output_fmap_height = ((lc[i].input_fmap_height + lc[i].conv_pad * 2) - (lc[i].filter_size - 1)) / lc[i].pool_size;
 		lc[i].output_fmap_width  = ((lc[i].input_fmap_width + lc[i].conv_pad * 2) - (lc[i].filter_size - 1)) / lc[i].pool_size;
 	}
+
 }
 
 void print_network(layer_config *lc){
@@ -67,7 +69,7 @@ void print_network(layer_config *lc){
 	printf("calculating....\n");
 	for(int i = 0 ; i < LAYER_NUM ; i++){
 		printf("Layer[%d]'s Configuration\n" , i);
-		printf("Input_Channel : %u  // Input_Width : %u // Input_Height : %u " , lc[i].input_fmap_channel, lc[i].input_fmap_width , lc[i].input_fmap_height);
-		printf("  //  Output_Channel : %u  // Output_Width : %u // Output_Height : %u \n\n", lc[i].output_fmap_channel, lc[i].input_fmap_width , lc[i].output_fmap_height);
+		printf("Input_Channel : %-8u  Input_Width : %-8u Input_Height : %-8u " , lc[i].input_fmap_channel, lc[i].input_fmap_width , lc[i].input_fmap_height);
+		printf("  Output_Channel : %-8u  Output_Width : %-8u Output_Height : %-8u \n\n", lc[i].output_fmap_channel, lc[i].output_fmap_width , lc[i].output_fmap_height);
 	}
 }

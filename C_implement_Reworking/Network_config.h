@@ -11,8 +11,7 @@
 #include <math.h>
 
 #include "Operation.h"
-#include "Network_config.h"
-#include "Memory.h"
+
 
 #define _CRT_SECURE_NO_WARNINGS
 #define INPUT_IMAGE_WIDTH 	32
@@ -28,7 +27,19 @@
 #define BIFO				3
 #define FIFO				4
 
+typedef unsigned char 		u8;
+typedef unsigned short int 	u16;
 typedef unsigned int 		u32;
+typedef unsigned long long 	u64;
+typedef signed char			s8;
+typedef signed short int	s16;
+typedef signed int 			s32;
+typedef signed long long 	s64;
+typedef u32 				packed_t;
+typedef u16					pfmap_t;
+typedef float 				thresh_t;
+typedef float				last_layer_BNparam_t;
+typedef float				final_result_t;
 
 typedef struct layer_config{
 	u32 layer_type;				// CONV or FC
@@ -50,5 +61,6 @@ typedef struct layer_config{
 static layer_config lc[LAYER_NUM];
 
 void layer_configuration(layer_config *lc);
+void print_network(layer_config *lc);
 
 #endif
